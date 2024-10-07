@@ -17,7 +17,7 @@ const UserMonthlyRewards = ({ transactions }) => {
     result[customerId].monthlySpending[monthYear] +=
       calculateRewards(amountSpent);
   });
-  console.log("result", result);
+  // console.log("result", result);
 
   const flattenedData = Object.entries(result).flatMap(
     ([customerId, customerData]) => {
@@ -48,7 +48,7 @@ const UserMonthlyRewards = ({ transactions }) => {
       style: { textAlign: "right" },
     },
   ];
-  console.log("flattenedData", flattenedData);
+  // console.log("flattenedData", flattenedData);
   return (
     <>
       <ResuableTable

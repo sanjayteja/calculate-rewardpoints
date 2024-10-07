@@ -43,7 +43,7 @@ const RewardPoints = () => {
     };
     fetchDataAsync();
   }, []);
-  console.log("data", data);
+  // console.log("data", data);
   if (loading) return <LoadingIndicator />;
   if (error) return <ErrorMessage message={error} />;
   const totalAmountSpentByCustomer = calculateTotalAmountSpent(data);

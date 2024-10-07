@@ -10,7 +10,6 @@ const TotalRewards = ({ totalRewards }) => {
       style: { textAlign: "right" },
     },
   ];
-  // converting the totalRewards object to an array of values
   const rewards = Object.values(totalRewards);
   return (
     <>

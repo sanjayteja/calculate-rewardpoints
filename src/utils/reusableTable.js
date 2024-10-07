@@ -10,7 +10,7 @@ export const ResuableTable = ({ columns, data, keyField }) => {
       </thead>
       <tbody>
         {data.map((row, index) => (
-          <tr key={row[keyField]}>
+          <tr key={index}>
             {columns.map((column) => (
               <td key={column.key} style={column.style || {}}>
                 {column.render
