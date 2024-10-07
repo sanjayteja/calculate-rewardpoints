@@ -1,0 +1,74 @@
+[
+    {
+        "customerId":"C001",
+        "transactionId":"T001",
+        "name": "John Doe",
+        "product": "Laptop",
+        "amountSpent": 120,
+        "transactionDate": "21/12/2023"
+    },
+    {
+        "customerId":"C002",
+        "transactionId":"T002",
+        "name": "Jane Smith",
+        "product": "Mouse",
+        "amountSpent": 100.4,
+        "transactionDate": "30/12/2023"
+    },
+    {
+        "customerId":"C002",
+        "transactionId":"T003",
+        "name": "Jane Smith",
+        "product": "Headphones",
+        "amountSpent": 75,
+        "transactionDate": "10/1/2024"
+    },
+    {
+        "customerId":"C003",
+        "transactionId":"T003",
+        "name": "Alice Johnson",
+        "product": "Monitor",
+        "amountSpent": 150,
+        "transactionDate": "15/1/2024"
+    },
+    {
+        "customerId":"C001",
+        "transactionId":"T005",
+        "name": "John Doe",
+        "product": "Phone",
+        "amountSpent": 200,
+        "transactionDate": "5/2/2024"
+    },
+    {
+        "customerId":"C003",
+        "transactionId":"T006",
+        "name": "Alice Johnson",
+        "product": "Microphone",
+        "amountSpent": 90,
+        "transactionDate": "12/1/2024"
+    },
+    {
+        "customerId":"C001",
+        "transactionId":"T007",
+        "name": "John Doe",
+        "product": "Keyboard",
+        "amountSpent": 90,
+        "transactionDate": "5/12/2023"
+    },
+    {
+        "customerId":"C003",
+        "transactionId":"T008",
+        "name": "Alice Johnson",
+        "product": "Speaker",
+        "amountSpent": 110,
+        "transactionDate": "1/1/2024"
+    },
+    {
+        "customerId":"C001",
+        "transactionId":"T009",
+        "name": "John Doe",
+        "product": "Iphone",
+        "amountSpent": 210,
+        "transactionDate": "1/11/2023"
+    }
+]

@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+}
+.tableContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.tableSection {
+  margin: 0 20px;
+}
+.tableSection p {
+  margin-bottom: 5px;
+}
+table tr:nth-child(even) {
+  width: 100%;
+  margin: 0 10px;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: #dadada;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-size: 12px;
+}
+th {
+  background-color: #0cafe6;
+  color: white;
+}
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid #c5c1c1;
+}
