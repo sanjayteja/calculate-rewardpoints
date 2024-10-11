@@ -1,61 +1,98 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { calculateRewards } from "../../utils/calculateRewards";
-import { formatDate } from "../../utils/formatDate";
-import { ResuableTable } from "../../utils/reusableTable";
+import ReusableTable from "../ReusableTable";
+import { getMonthName } from "../../utils/getMonthName";
 
 const UserMonthlyRewards = ({ transactions }) => {
-  const result = {};
-  transactions.forEach(({ customerId, name, amountSpent, transactionDate }) => {
-    const [, month, year] = transactionDate.split("/");
-    const monthYear = `${month}/${year}`;
-    if (!result[customerId]) {
-      result[customerId] = { name, monthlySpending: {} };
-    }
-    if (!result[customerId].monthlySpending[monthYear]) {
-      result[customerId].monthlySpending[monthYear] = 0;
-    }
-    result[customerId].monthlySpending[monthYear] +=
-      calculateRewards(amountSpent);
-  });
-  // console.log("result", result);
+  // useMemo to memoize result object based on transactions
+  const result = useMemo(() => {
+    return transactions.reduce(
+      (
+        acc,
+        { customerId, name, amountSpent, transactionDate, transactionId }
+      ) => {
+        const [, month, year] = transactionDate.split("/");
+        const monthYear = `${month}/${year}`;
+        if (!acc[monthYear]) {
+          acc[monthYear] = {};
+        }
+        if (!acc[monthYear][customerId]) {
+          acc[monthYear][customerId] = { name, transactions: [] };
+        }
+        acc[monthYear][customerId].transactions.push({
+          transactionId,
+          transactionDate,
+          transactionYear: year,
+          amountSpent,
+          points: calculateRewards(amountSpent),
+        });
+        return acc;
+      },
+      {}
+    );
+  }, [transactions]);
 
-  const flattenedData = Object.entries(result).flatMap(
-    ([customerId, customerData]) => {
-      return Object.entries(customerData.monthlySpending).map(
-        ([monthYear, amountSpent, transactionId]) => {
-          return {
+  // useMemo to memoize and generate tables for each month-year group
+  const monthlyTables = useMemo(() => {
+    return Object.entries(result).map(([monthYear, customers]) => {
+      const [month, year] = monthYear.split("/");
+      const monthName = getMonthName(month);
+
+      // Flattening customer transactions into a single array
+      const data = Object.entries(customers).flatMap(
+        ([customerId, customerData]) => {
+          return customerData.transactions.map((transaction) => ({
             customerId,
             name: customerData.name,
-            monthYear,
-            amountSpent,
-            transactionId,
-          };
+            ...transaction,
+          }));
         }
       );
-    }
-  );
-  const userMonthlyRewardsTable = [
-    { key: "customerId", header: "Cust.id" },
-    { key: "name", header: "Name" },
-    {
-      key: "monthYear",
-      header: "Month & Year",
-      render: (value) => formatDate(value),
-    },
-    {
-      key: "amountSpent",
-      header: "Reward Points",
-      style: { textAlign: "right" },
-    },
-  ];
-  // console.log("flattenedData", flattenedData);
+
+      // Sorting the data by transaction date
+      const sortedData = data.sort((a, b) => {
+        const [dayA, monthA, yearA] = a.transactionDate.split("/");
+        const [dayB, monthB, yearB] = b.transactionDate.split("/");
+        return (
+          new Date(`${yearA}-${monthA}-${dayA}`) -
+          new Date(`${yearB}-${monthB}-${dayB}`)
+        );
+      });
+
+      const userMonthlyRewardsTable = [
+        { key: "customerId", header: "Customer Id" },
+        { key: "name", header: "Customer Name" },
+        { key: "transactionId", header: "Transaction Id" },
+        { key: "transactionDate", header: "Transaction Date" },
+        { key: "transactionYear", header: "Transaction Year" },
+        {
+          key: "amountSpent",
+          header: "Amount Spent",
+          render: (value) => `$${value}`,
+          style: { textAlign: "right" },
+        },
+        { key: "points", header: "Points", style: { textAlign: "right" } },
+      ];
+
+      return (
+        <div key={monthYear}>
+          <h4>
+            {monthName} {year}
+          </h4>
+          <ReusableTable
+            columns={userMonthlyRewardsTable}
+            data={sortedData}
+            keyField="transactionId"
+          />
+        </div>
+      );
+    });
+  }, [result]);
+
   return (
     <>
-      <ResuableTable
-        columns={userMonthlyRewardsTable}
-        data={flattenedData}
-        keyField="transactionId"
-      />
+      <h3>User Monthly Rewards</h3>
+      {monthlyTables}
     </>
   );
 };

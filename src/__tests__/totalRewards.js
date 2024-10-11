@@ -1,51 +1,51 @@
+import React from "react";
 import { render } from "@testing-library/react";
 import TotalRewards from "../components/module/TotalRewards";
-import { ResuableTable } from "../utils/reusableTable";
+import ReusableTable from "../components/ReusableTable";
 
-// mock the ReusableTable component
-jest.mock("../utils/reusableTable.js", () => ({
-  ResuableTable: jest.fn(() => <div>Mocked ReusableTable</div>),
-}));
+jest.mock("../components/ReusableTable");
+
 describe("TotalRewards Component", () => {
   const totalRewards = {
-    user1: { name: "User 1", totalAmountSpent: 100 },
-    user2: { name: "User 2", totalAmountSpent: 200 },
+    "John Doe": { name: "John Doe", totalAmountSpent: 150 },
+    "Jane Smith": { name: "Jane Smith", totalAmountSpent: 50 },
   };
-  it("should render without crashing", () => {
-    const { container } = render(<TotalRewards totalRewards={totalRewards} />);
-    expect(container).toBeInTheDocument();
+
+  beforeEach(() => {
+    ReusableTable.mockImplementation(({ columns, data }) => (
+      <div data-testid="reusable-table" />
+    ));
   });
-  it("should pass the correct columns to ReusableTable", () => {
+
+  it("renders without crashing", () => {
+    const { getByText } = render(<TotalRewards totalRewards={totalRewards} />);
+    expect(getByText("Total Rewards")).toBeInTheDocument();
+  });
+
+  it("passes the correct data to ReusableTable", () => {
+    const { getByTestId } = render(
+      <TotalRewards totalRewards={totalRewards} />
+    );
+    const table = getByTestId("reusable-table");
+    expect(table).toBeInTheDocument();
+  });
+
+  it("displays customer names and total reward points correctly", () => {
     render(<TotalRewards totalRewards={totalRewards} />);
-    const expectedColumns = [
-      { key: "name", header: "Name" },
+    const tableProps = ReusableTable.mock.calls[0][0];
+    expect(tableProps.data).toEqual(Object.values(totalRewards));
+    expect(tableProps.columns).toEqual([
+      { key: "name", header: "Customer Name" },
       {
         key: "totalAmountSpent",
-        header: "Reward Points",
-        style: { textAlign: "right" },
+        header: "Total Reward Points",
       },
-    ];
-    expect(ResuableTable).toHaveBeenCalledWith(
-      expect.objectContaining({ columns: expectedColumns }),
-      {}
-    );
+    ]);
   });
-  it("should convert totalRewards object to an array and pass it to ReusableTable", () => {
+
+  it("has correct keyField for ReusableTable", () => {
     render(<TotalRewards totalRewards={totalRewards} />);
-    const expectedData = [
-      { name: "User 1", totalAmountSpent: 100 },
-      { name: "User 2", totalAmountSpent: 200 },
-    ];
-    expect(ResuableTable).toHaveBeenCalledWith(
-      expect.objectContaining({ data: expectedData }),
-      {}
-    );
-  });
-  it("should use 'name' as the keyField for ReusableTable", () => {
-    render(<TotalRewards totalRewards={totalRewards} />);
-    expect(ResuableTable).toHaveBeenCalledWith(
-      expect.objectContaining({ keyField: "name" }),
-      {}
-    );
+    const tableProps = ReusableTable.mock.calls[0][0];
+    expect(tableProps.keyField).toBe("name");
   });
 });

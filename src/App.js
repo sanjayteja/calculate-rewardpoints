@@ -1,8 +1,8 @@
 import "./App.css";
-import RewardPoints from "./components/module/RewardPoints";
+import CustomerRewardsDashboard from "./components/module/CustomerRewardsDashboard";
 
 function App() {
-  return <RewardPoints />;
+  return <CustomerRewardsDashboard />;
 }
 
 export default App;

@@ -1,19 +1,20 @@
 import React from "react";
-import { ResuableTable } from "../../utils/reusableTable";
+import ReusableTable from "../ReusableTable";
 
 const TotalRewards = ({ totalRewards }) => {
   const totalPointsTable = [
-    { key: "name", header: "Name" },
+    { key: "name", header: "Customer Name" },
     {
       key: "totalAmountSpent",
-      header: "Reward Points",
-      style: { textAlign: "right" },
+      header: "Total Reward Points",
     },
   ];
+  // convert the totalRewards object to an array of values
   const rewards = Object.values(totalRewards);
   return (
     <>
-      <ResuableTable
+      <h4>Total Rewards</h4>
+      <ReusableTable
         columns={totalPointsTable}
         data={rewards}
         keyField="name"

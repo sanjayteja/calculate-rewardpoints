@@ -70,5 +70,93 @@
     "product": "Iphone",
     "amountSpent": 210,
     "transactionDate": "1/11/2023"
+  },
+  {
+    "customerId": "C001",
+    "transactionId": "T016",
+    "name": "John Doe",
+    "product": "Smart Phone",
+    "amountSpent": 140,
+    "transactionDate": "15/2/2024"
+  },
+  {
+    "customerId": "C001",
+    "transactionId": "T018",
+    "name": "John Doe",
+    "product": "Cycle",
+    "amountSpent": 150,
+    "transactionDate": "12/2/2024"
+  },
+  {
+    "customerId": "C001",
+    "transactionId": "T017",
+    "name": "John Doe",
+    "product": "Smart Phone",
+    "amountSpent": 130,
+    "transactionDate": "18/1/2024"
+  },
+  {
+    "customerId": "C001",
+    "transactionId": "T019",
+    "name": "John Doe",
+    "product": "Iphone",
+    "amountSpent": 210,
+    "transactionDate": "25/12/2023"
+  },
+  {
+    "customerId": "C002",
+    "transactionId": "T020",
+    "name": "Jane Smith",
+    "product": "Iphone",
+    "amountSpent": 220,
+    "transactionDate": "27/1/2024"
+  },
+  {
+    "customerId": "C003",
+    "transactionId": "T015",
+    "name": "Alice Johnson",
+    "product": "Smart Phone",
+    "amountSpent": 210,
+    "transactionDate": "10/12/2023"
+  },
+  {
+    "customerId": "C001",
+    "transactionId": "T010",
+    "name": "John Doe",
+    "product": "Pen",
+    "amountSpent": 20,
+    "transactionDate": "3/12/2023"
+  },
+  {
+    "customerId": "C002",
+    "transactionId": "T011",
+    "name": "Jane Smith",
+    "product": "Iphone",
+    "amountSpent": 160,
+    "transactionDate": "7/1/2024"
+  },
+  {
+    "customerId": "C003",
+    "transactionId": "T012",
+    "name": "Alice Johnson",
+    "product": "TV",
+    "amountSpent": 130,
+    "transactionDate": "8/1/2024"
+  },
+  {
+    "customerId": "C001",
+    "transactionId": "T013",
+    "name": "John Doe",
+    "product": "Smart Watch",
+    "amountSpent": 170,
+    "transactionDate": "9/1/2024"
+  },
+  {
+    "customerId": "C002",
+    "transactionId": "T014",
+    "name": "Jane Smith",
+    "product": "Bag",
+    "amountSpent": 70,
+    "transactionDate": "20/12/2023"
   }
 ]

@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# Customer Rewards Assignment Program(Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A retailer offers reward points to its customers based on each recorded purchase.
 
-## Available Scripts
+## Project Description
 
-In the project directory, you can run:
+A customer receives 2 points for every dollar spent over $100 in each transaction, plus 1 point for every dollar spent between $50 and $100 in each transaction.(ex. for $130 purchase, a customer receives 110 points($130 = 30*2 + 50 => 110 points)) and receives 1 point for every dollar spent over $50 and below $100(ex. for $70 purchase, a cusomer receives 20 points($70 = (70-50) * 1 => 20 points))
+Given a record of every transaction during a three month period, calculating the reward points received for each customer per month and total.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+** front-end:** React JS, ES6
+** testing:** Jest & React Testing Library(RTL)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+Node.js and npm installed
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Setup
 
-### `npm run build`
+1. **clone the repository:**
+   https://github.com/sushmita30jan/reward-calculator/tree/main
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **Install dependencies:**
+   npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Start the application:**
+   npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Test cases run:**
+   npm test
 
-### `npm run eject`
+### Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The application will run at port 3000 `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Mock Data
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The application uses mock data to simulate the reward calculation, the mock data is defined in `public/data.json`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Features
 
-## Learn More
+- Calculate reward points earned for each customer per month and total
+- Show data based on latest consecutive N month period of time
+- Transaction data can be with in the same year or spans different years
+- Multiple transactions are displayed month-wise for the last 3 months.
+- All transactions are displayed for the last 3 months.
+- Loading indicator & Error handling implemented
+- Different transaction logs displayed
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Screen shots of the Application
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+User Monthly Table-
+![user monthly table](image.png)
+Total Rewards Table-
+![total rewards table](image-1.png)
+All transactions Table-
+![all transactions table](image-2.png)
+Loading Indicator-
+![Loading indicator](image-3.png)
+Error handling-
+![Error](image-4.png)
+UI with logger-
+![UI with logger](image-5.png)
 
-### Code Splitting
+### File Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+reward-points/
+└── 📁public
+└── data.json
+└── favicon.ico
+└── index.html
+└── logo192.png
+└── logo512.png
+└── manifest.json
+└── robots.txt
+└── 📁src
+└── 📁**tests**
+└── allTransactions.js
+└── calculateRewardsByAmount.js
+└── totalRewards.js
+└── 📁components
+└── 📁module
+└── AllTransactions.js
+└── CustomerRewardsDashboard.js
+└── TotalRewards.js
+└── UserMonthlyRewards.js
+└── ErrorMessage.js
+└── LoadingIndicator.js
+└── ReusableTable.js
+└── 📁services
+└── fetchData.js
+└── 📁utils
+└── calculateRewards.js
+└── calculateTotalAmountSpent.js
+└── getMonthName.js
+└── App.css
+└── App.js
+└── index.css
+└── index.js
+└── logger.js
+└── setupTests.js
 
-### Analyzing the Bundle Size
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```

@@ -1,4 +1,4 @@
-export const ResuableTable = ({ columns, data, keyField }) => {
+const ReusableTable = ({ columns, data, keyField }) => {
   return (
     <table>
       <thead>
@@ -24,3 +24,4 @@ export const ResuableTable = ({ columns, data, keyField }) => {
     </table>
   );
 };
+export default ReusableTable;

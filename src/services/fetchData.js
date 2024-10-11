@@ -1,18 +1,16 @@
 import logger from "../logger";
-import { constants } from "../utils/constants";
 
 export const fetchData = async (url) => {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      logger.error(constants.ERR_MESSAGE);
-      throw new Error(constants.ERR_MESSAGE);
+      logger.error("An Error occured while fetching data");
+      throw new Error("Network response was not ok");
     }
-    const data = await response.json();
-    logger.log("Fetch customer transaction data", data);
-    return data;
+    return await response.json();
+    logger.log("Fetch customer transaction data", await response.json());
   } catch (error) {
-    console.error(constants.ERR_MESSAGE, error);
+    console.error("Fetch error", error);
     throw error;
   }
 };

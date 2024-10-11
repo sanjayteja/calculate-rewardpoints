@@ -1,25 +1,14 @@
 .App {
   text-align: center;
 }
-.tableContainer {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-.tableSection {
-  margin: 0 20px;
-}
-.tableSection p {
-  margin-bottom: 5px;
-}
 table tr:nth-child(even) {
   width: 100%;
   margin: 0 10px;
-  border-collapse: collapse;
   font-family: Arial, sans-serif;
   background-color: #dadada;
 }
-th, td {
+th,
+td {
   padding: 8px;
   text-align: left;
   border: 1px solid #ddd;
@@ -31,7 +20,24 @@ th {
 }
 table {
   border-collapse: collapse;
+  width: 100%;
 }
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #c5c1c1;
+}
+.box {
+  border: 1px solid lightgray;
+  padding: 20px;
+  font-size: bold;
+}
+.loading {
+  width: 800px;
+  height: 100px;
+  padding: 20px;
+  font-size: large;
+  margin: 0 auto;
+  font-weight: bold;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
